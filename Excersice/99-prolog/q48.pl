@@ -14,23 +14,32 @@ nand(A,B):-
 nor(A,B):-
     \+ or(A,B).
 
-table(L, Exp):- 
-    member(Mem, L),
-    bind(Mem), 
-    do(L, Exp). 
+bind_item(false).
+bind_item(true).
 
-do(L, _):- 
-    member(Mem, L),
-    write(Mem), 
-    write(" "), 
-    false.
+bind([]).
+bind([H|T]):-
+    bind_item(H),
+    bind(T).
 
-do(_,Exp):-
+writeVar([]).
+writeVar([H|T]):-
+    write(H),
+    write("    "),
+    writeVar(T).
+
+writeExp(Exp):-
     Exp, 
     write(true),
     nl.
 
-do(_,Exp):-
+writeExp(Exp):-
     \+ Exp, 
     write(false), 
     nl.
+
+
+table(L, Exp):- 
+    bind(L),
+    writeVar(L),
+    writeExp(Exp), false. 
