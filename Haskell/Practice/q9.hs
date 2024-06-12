@@ -1,4 +1,4 @@
-pack l = packHelper [] "" l
+pack = packHelper [] "" 
 
 packHelper c curr [] = c ++ [curr] 
 packHelper c curr [x] = c ++ [curr ++ [x]]
