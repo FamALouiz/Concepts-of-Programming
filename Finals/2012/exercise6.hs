@@ -1,0 +1,1 @@
+q2 x y z w = w (x y) (z y)
