@@ -1,0 +1,1 @@
+p l = foldr (+) 0 (map (^3) (filter (>0) l))
