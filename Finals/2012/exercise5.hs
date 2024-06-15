@@ -1,0 +1,1 @@
+sumSquare l = foldr (+) 0 (map (^2) (filter (>0) l))
